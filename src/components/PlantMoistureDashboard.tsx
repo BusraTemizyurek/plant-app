@@ -5,7 +5,6 @@ import { ChartDataPoint } from "@/types";
 import Header from "./Header";
 import PlantVisual from "./PlantVisual";
 import MoistureChart from "./MoistureChart";
-import QuickStats from "./QuickStats";
 import { getEvents } from "@/api-client/getEvents";
 import { Event } from "@/types";
 
@@ -18,6 +17,10 @@ const PlantMoistureDashboard = () => {
 
   if (!events) {
     return null;
+  }
+
+  if (events.length === 0) {
+    return <div>No data available</div>;
   }
 
   const lastTime = events[events.length - 1].timestamp;
