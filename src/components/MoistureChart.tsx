@@ -4,6 +4,7 @@ import React from "react";
 import { ResponsiveContainer, Area, AreaChart, XAxis, YAxis } from "recharts";
 import { ChartDataPoint } from "@/types";
 import ChartLegend from "./ChartLegend";
+import QuickStats from "./QuickStats";
 
 interface MoistureChartProps {
   chartData: ChartDataPoint[];
@@ -67,6 +68,7 @@ const MoistureChart = ({ chartData }: MoistureChartProps) => {
           </AreaChart>
         </ResponsiveContainer>
       </div>
+      <QuickStats chartData={chartData} />
     </div>
   );
 };

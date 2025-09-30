@@ -56,7 +56,6 @@ const PlantMoistureDashboard = () => {
 
           <div className="lg:col-span-2">
             <MoistureChart chartData={chartData} />
-            <QuickStats chartData={chartData} />
           </div>
         </div>
       </div>
