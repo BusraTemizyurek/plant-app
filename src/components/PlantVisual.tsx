@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-// import Image from "next/image";
+import Image from "next/image";
 
 interface PlantVisualProps {
   currentMoisture: number;
@@ -39,7 +39,7 @@ const PlantVisual = ({
 
     return (
       <div className="relative">
-        <img
+        <Image
           src={image.src}
           alt={image.alt}
           className="w-80 h-80 object-contain drop-shadow-lg"

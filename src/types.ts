@@ -1,5 +1,3 @@
-export type MoistureReading = [number, string];
-
 export interface ChartDataPoint {
   moisture: number;
   time: string;
@@ -7,3 +5,9 @@ export interface ChartDataPoint {
 }
 
 export type PlantState = "dried" | "healthy" | "overwatered";
+
+export type Event = {
+  id: number;
+  moisture: number;
+  timestamp: string;
+};

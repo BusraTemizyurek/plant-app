@@ -1,8 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Header = () => {
+const LiveStatus = () => {
+  return (
+    <>
+      <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+      <span className="text-sm text-gray-600">Live</span>
+    </>
+  );
+};
+
+const OfflineStatus = () => {
+  return (
+    <>
+      <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+      <span className="text-sm text-gray-600">Offline</span>
+    </>
+  );
+};
+
+type HeaderProps = {
+  isLive: boolean;
+};
+
+const Header = ({ isLive }: HeaderProps) => {
   return (
     <div className="flex items-center justify-between mb-8">
       <div>
@@ -14,8 +36,7 @@ const Header = () => {
         </p>
       </div>
       <div className="flex items-center space-x-4">
-        <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-        <span className="text-sm text-gray-600">Live</span>
+        {isLive ? <LiveStatus /> : <OfflineStatus />}
       </div>
     </div>
   );
