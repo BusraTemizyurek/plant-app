@@ -4,7 +4,7 @@ A real-time plant moisture monitoring dashboard built with Next.js that tracks a
 
 ## Demo
 
-You can find a demo in [here](https://plant-app-one-gamma.vercel.app/).
+You can find a demo in [here](https://www.thirstyplant.live/).
 
 ## Architecture
 
