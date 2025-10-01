@@ -3,7 +3,6 @@
 import React from "react";
 import { ResponsiveContainer, Area, AreaChart, XAxis, YAxis } from "recharts";
 import { ChartDataPoint } from "@/types";
-import ChartLegend from "./ChartLegend";
 import QuickStats from "./QuickStats";
 
 interface MoistureChartProps {
@@ -20,8 +19,6 @@ const MoistureChart = ({ chartData }: MoistureChartProps) => {
           </h2>
           <p className="text-sm text-gray-500">Recent moisture readings</p>
         </div>
-
-        <ChartLegend />
       </div>
 
       <div className="h-80">

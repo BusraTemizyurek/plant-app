@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Legend from "./Legend";
 
 interface PlantVisualProps {
   currentMoisture: number;
@@ -71,7 +72,7 @@ const PlantVisual = ({
   return (
     <div className="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 h-full">
       <div className="flex flex-col items-center justify-center h-full">
-        <div className="mb-6">{getPlantImage(currentMoisture)}</div>
+        <div>{getPlantImage(currentMoisture)}</div>
 
         <div className="text-center">
           <div className="text-4xl font-light text-gray-800 mb-2">
@@ -89,6 +90,7 @@ const PlantVisual = ({
           <div className="text-xs text-gray-400 mt-3">
             Last reading: {lastReadingTime}
           </div>
+          <Legend />
         </div>
       </div>
     </div>
