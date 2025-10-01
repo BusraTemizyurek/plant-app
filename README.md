@@ -56,26 +56,6 @@ npm run dev
 - `GET /api/events` - Retrieve moisture sensor data
 - `POST /api/events` - Post new moisture sensor data
 
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── api/events/         # API route for sensor data
-│   ├── layout.tsx          # Root layout
-│   └── page.tsx           # Main dashboard page
-├── components/
-│   ├── ChartLegend.tsx    # Chart legend component
-│   ├── Header.tsx         # Dashboard header
-│   ├── MoistureChart.tsx  # Main chart component
-│   ├── PlantMoistureDashboard.tsx  # Main dashboard
-│   ├── PlantVisual.tsx    # Plant visualization
-│   └── QuickStats.tsx     # Statistics component
-├── api-client/
-│   └── getEvents.ts       # API client for events
-└── types.ts              # TypeScript type definitions
-```
-
 ## Environment Setup
 
 Make sure to configure your database connection for the Neon PostgreSQL integration used by the `/api/events` endpoint.
