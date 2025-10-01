@@ -29,7 +29,7 @@ const Header = ({ isLive }: HeaderProps) => {
     <div className="flex items-center justify-between mb-8">
       <div>
         <h1 className="text-2xl font-semibold text-gray-800 mb-1">
-          Plant Monitor
+          Thirsty Plant
         </h1>
         <p className="text-gray-500 text-sm">
           Monitor your plant&apos;s moisture levels

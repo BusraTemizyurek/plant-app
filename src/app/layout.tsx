@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Plant App",
+  title: "Thirsty Plant",
   description: "Moisture amount tracker for your plant",
 };
 
