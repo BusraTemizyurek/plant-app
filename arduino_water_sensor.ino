@@ -15,8 +15,8 @@ const char* ENDPOINT      = "https://plant-app-one-gamma.vercel.app/api/events";
 const int DRY_VALUE = 12;    // raw reading for dry soil
 const int WET_VALUE = 600;   // raw reading for wet soil
 
-// How long to sleep between reports (microseconds). e.g. 5 minutes:
-const uint64_t SLEEP_US = 5ULL * 60ULL * 1000000ULL;
+// How long to sleep between reports (microseconds). e.g. 60 minutes:
+const uint64_t SLEEP_US = 60ULL * 60ULL * 1000000ULL;
 
 // ====== HELPERS ======
 int readAveragedA0(uint8_t samples = 8, uint16_t gapMs = 5) {
