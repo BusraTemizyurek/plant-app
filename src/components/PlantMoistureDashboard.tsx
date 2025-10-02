@@ -25,7 +25,7 @@ const PlantMoistureDashboard = () => {
 
   const lastTime = events[events.length - 1].timestamp;
   const timePassed = Date.now() - new Date(lastTime).getTime();
-  const isLive = timePassed <= 360000; // 6 minutes in milliseconds
+  const isLive = timePassed <= 3600000; // 60 minutes in milliseconds
 
   // Process the data for chart
   const chartData: ChartDataPoint[] = events.map((event) => {
