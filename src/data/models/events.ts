@@ -14,7 +14,11 @@ const sql = new Sequelize({
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   dialect: "postgres",
-  ssl: true,
+  dialectOptions: {
+    ssl: {
+      require: true,
+    },
+  },
   dialectModule: pg,
 });
 
@@ -45,5 +49,5 @@ Event.init(
       allowNull: false,
     },
   },
-  { sequelize: sql }
+  { sequelize: sql, tableName: "events" }
 );

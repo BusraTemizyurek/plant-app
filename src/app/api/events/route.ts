@@ -4,7 +4,7 @@ import { Event } from "@/data/models/events";
 export async function GET(): Promise<NextResponse<Event[]>> {
   const latestEvents = await Event.findAll({
     attributes: ["id", "moisture", "timestamp"],
-    order: ["timestamp", "DESC"],
+    order: [["timestamp", "DESC"]],
     limit: 50,
   });
 
