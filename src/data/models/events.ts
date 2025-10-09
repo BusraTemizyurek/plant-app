@@ -14,6 +14,7 @@ const sql = new Sequelize({
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   dialect: "postgres",
+  ssl: true,
   dialectModule: pg,
 });
 
