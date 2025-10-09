@@ -4,9 +4,6 @@ import { Event } from "@/models/events";
 export async function GET(): Promise<NextResponse<Event[]>> {
   const latestEvents = await Event.findAll({
     attributes: ["id", "moisture", "timestamp"],
-    where: {
-      plantId: 2,
-    },
     order: [["timestamp", "DESC"]],
     limit: 50,
   });
@@ -18,8 +15,13 @@ export async function GET(): Promise<NextResponse<Event[]>> {
   return NextResponse.json(data);
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ plantId: string }> }
+) {
   try {
+    const { plantId: plantIdString } = await params;
+    const plantId = parseInt(plantIdString, 10);
     const body = await request.json();
     const { moisture } = body;
 
@@ -30,7 +32,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    await Event.create({ moisture, plantId: 2 });
+    await Event.create({ moisture, plantId });
 
     return NextResponse.json({ status: 201 });
   } catch (error) {
