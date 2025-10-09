@@ -6,13 +6,16 @@ import {
   InferCreationAttributes,
   CreationOptional,
 } from "sequelize";
+import pg from "pg";
 
-const connectionStr = process.env.CONNECTION_STRING;
-if (!connectionStr) {
-  throw new Error("DB connection string is missing");
-}
-
-const sql = new Sequelize(connectionStr);
+const sql = new Sequelize({
+  host: process.env.POSTGRES_HOST,
+  database: process.env.POSTGRES_DATABASE,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  dialect: "postgres",
+  dialectModule: pg,
+});
 
 export class Event extends Model<
   InferAttributes<Event>,
