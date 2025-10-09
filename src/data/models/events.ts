@@ -36,7 +36,7 @@ Event.init(
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      defaultValue: DataTypes.INTEGER,
+      autoIncrement: true,
       allowNull: false,
     },
     moisture: {
@@ -49,5 +49,5 @@ Event.init(
       allowNull: false,
     },
   },
-  { sequelize: sql, tableName: "events" }
+  { sequelize: sql, tableName: "events", timestamps: false }
 );
