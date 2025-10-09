@@ -1,32 +1,21 @@
-import { neon } from "@neondatabase/serverless";
 import { NextRequest, NextResponse } from "next/server";
-import { Event } from "@/types";
+import { Event } from "@/data/models/events";
 
 export async function GET(): Promise<NextResponse<Event[]>> {
-  const url = process.env.DATABASE_URL;
-  if (!url) {
-    throw new Error("Database URL is missing");
-  }
+  const latestEvents = await Event.findAll({
+    attributes: ["id", "moisture", "timestamp"],
+    order: ["timestamp", "DESC"],
+    limit: 50,
+  });
 
-  const sql = neon(url);
-  const data = (await sql`
-SELECT * FROM (
-  SELECT * FROM events 
-  ORDER BY timestamp DESC 
-  LIMIT 50
-) AS recent_events 
-ORDER BY timestamp ASC;
-`) as Event[];
+  const data = latestEvents.sort(
+    (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+  );
 
   return NextResponse.json(data);
 }
 
 export async function POST(request: NextRequest) {
-  const url = process.env.DATABASE_URL;
-  if (!url) {
-    throw new Error("Database URL is missing");
-  }
-
   try {
     const body = await request.json();
     const { moisture } = body;
@@ -38,8 +27,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const sql = neon(url);
-    await sql`INSERT INTO events (moisture) VALUES (${moisture})`;
+    await Event.create({ moisture });
 
     return NextResponse.json({ status: 201 });
   } catch (error) {
