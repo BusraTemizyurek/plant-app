@@ -1,26 +1,12 @@
 import {
   DataTypes,
-  Sequelize,
   Model,
   InferAttributes,
   InferCreationAttributes,
   CreationOptional,
 } from "sequelize";
-import pg from "pg";
-
-const sql = new Sequelize({
-  host: process.env.POSTGRES_HOST,
-  database: process.env.POSTGRES_DATABASE,
-  username: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  dialect: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-    },
-  },
-  dialectModule: pg,
-});
+import { sql } from "../db";
+import { Plant } from "./plants";
 
 export class Event extends Model<
   InferAttributes<Event>,
@@ -29,6 +15,7 @@ export class Event extends Model<
   declare id: CreationOptional<number>;
   declare moisture: number;
   declare timestamp: CreationOptional<Date>;
+  declare plantId: number;
 }
 
 Event.init(
@@ -40,13 +27,21 @@ Event.init(
       allowNull: false,
     },
     moisture: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     timestamp: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
       allowNull: false,
+    },
+    plantId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        key: "id",
+        model: Plant,
+      },
     },
   },
   { sequelize: sql, tableName: "events", timestamps: false }
