@@ -6,7 +6,7 @@ const LiveStatus = () => {
   return (
     <>
       <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-      <span className="text-sm text-gray-600">Live</span>
+      <span className="text-sm text-gray-600 mr-15">Live</span>
     </>
   );
 };
@@ -15,7 +15,7 @@ const OfflineStatus = () => {
   return (
     <>
       <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-      <span className="text-sm text-gray-600">Offline</span>
+      <span className="text-sm text-gray-600 mr-15">Offline</span>
     </>
   );
 };
@@ -26,7 +26,7 @@ type HeaderProps = {
 
 const Header = ({ isLive }: HeaderProps) => {
   return (
-    <div className="flex items-center justify-between mb-8">
+    <div className="flex items-center justify-between mb-8 ml-12">
       <div>
         <h1 className="text-2xl font-semibold text-gray-800 mb-1">
           Thirsty Plant

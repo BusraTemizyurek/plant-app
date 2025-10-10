@@ -1,16 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Event } from "@/models/events";
 
-export async function GET(): Promise<NextResponse<Event[]>> {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ plantId: string }> }
+): Promise<NextResponse<Event[]>> {
+  const { plantId: plantIdString } = await params;
+  const plantId = parseInt(plantIdString, 10);
+
+  // Get latest 50 records in descending order, then reverse for chronological display
   const latestEvents = await Event.findAll({
-    attributes: ["id", "moisture", "timestamp"],
+    where: { plantId },
+    attributes: ["id", "moisture", "timestamp", "plantId"],
     order: [["timestamp", "DESC"]],
     limit: 50,
   });
 
-  const data = latestEvents.sort(
-    (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
-  );
+  // Reverse to get chronological order (earliest to latest) without expensive date parsing
+  const data = latestEvents.reverse();
 
   return NextResponse.json(data);
 }

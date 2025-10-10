@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.0",
     "@neondatabase/serverless": "github:neondatabase/serverless",
     "dotenv": "^17.2.3",
     "next": "15.5.4",

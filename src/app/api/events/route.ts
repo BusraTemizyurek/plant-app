@@ -3,7 +3,7 @@ import { Event } from "@/models/events";
 
 export async function GET(): Promise<NextResponse<Event[]>> {
   const latestEvents = await Event.findAll({
-    attributes: ["id", "moisture", "timestamp"],
+    attributes: ["id", "moisture", "timestamp", "plantId"],
     where: {
       plantId: 2,
     },
