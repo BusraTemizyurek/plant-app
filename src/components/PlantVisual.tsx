@@ -9,7 +9,7 @@ interface PlantVisualProps {
   lastReadingTime: string;
 }
 
-const PlantVisual = ({
+export const PlantVisual = ({
   currentMoisture,
   lastReadingTime,
 }: PlantVisualProps) => {
@@ -96,5 +96,3 @@ const PlantVisual = ({
     </div>
   );
 };
-
-export default PlantVisual;

@@ -9,7 +9,7 @@ interface MoistureChartProps {
   chartData: ChartDataPoint[];
 }
 
-const MoistureChart = ({ chartData }: MoistureChartProps) => {
+export const MoistureChart = ({ chartData }: MoistureChartProps) => {
   return (
     <div className="bg-white rounded-3xl shadow-sm border border-gray-200 p-6 h-full">
       <div className="flex items-center justify-between mb-6">
@@ -69,5 +69,3 @@ const MoistureChart = ({ chartData }: MoistureChartProps) => {
     </div>
   );
 };
-
-export default MoistureChart;
