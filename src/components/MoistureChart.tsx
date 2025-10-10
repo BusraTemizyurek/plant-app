@@ -11,21 +11,21 @@ interface MoistureChartProps {
 
 export const MoistureChart = ({ chartData }: MoistureChartProps) => {
   return (
-    <div className="bg-white rounded-3xl shadow-sm border border-gray-200 p-6 h-full">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-white rounded-3xl shadow-sm border border-gray-200 p-4 sm:p-6 h-full">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
         <div>
-          <h2 className="text-lg font-medium text-gray-800 mb-1">
+          <h2 className="text-base sm:text-lg font-medium text-gray-800 mb-1">
             Moisture Timeline
           </h2>
-          <p className="text-sm text-gray-500">Recent moisture readings</p>
+          <p className="text-xs sm:text-sm text-gray-500">Recent moisture readings</p>
         </div>
       </div>
 
-      <div className="h-80">
+      <div className="h-64 sm:h-80">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={chartData}
-            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+            margin={{ top: 10, right: 15, left: 0, bottom: 0 }}
           >
             <defs>
               <linearGradient id="moistureGradient" x1="0" y1="0" x2="0" y2="1">

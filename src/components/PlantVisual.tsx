@@ -43,7 +43,7 @@ export const PlantVisual = ({
         <Image
           src={image.src}
           alt={image.alt}
-          className="w-80 h-80 object-contain drop-shadow-lg"
+          className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-lg"
           width={320}
           height={320}
         />
@@ -70,14 +70,14 @@ export const PlantVisual = ({
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 h-full">
+    <div className="bg-white rounded-3xl shadow-sm border border-gray-200 p-4 sm:p-6 lg:p-8 h-full">
       <div className="flex flex-col items-center justify-center h-full">
         <div>{getPlantImage(currentMoisture)}</div>
 
-        <div className="text-center">
-          <div className="text-4xl font-light text-gray-800 mb-2">
+        <div className="text-center mt-2 sm:mt-4">
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-800 mb-2">
             {currentMoisture}
-            <span className="text-2xl text-gray-500">%</span>
+            <span className="text-lg sm:text-xl lg:text-2xl text-gray-500">%</span>
           </div>
           <div
             className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${getStatusColor(

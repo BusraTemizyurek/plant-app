@@ -26,12 +26,12 @@ type HeaderProps = {
 
 const Header = ({ isLive }: HeaderProps) => {
   return (
-    <div className="flex items-center justify-between mb-8 ml-12">
-      <div>
-        <h1 className="text-2xl font-semibold text-gray-800 mb-1">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 ml-2 sm:ml-12 mr-4">
+      <div className="mb-3 sm:mb-0">
+        <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-1">
           Thirsty Plant
         </h1>
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-500 text-xs sm:text-sm">
           Monitor your plant&apos;s moisture levels
         </p>
       </div>
