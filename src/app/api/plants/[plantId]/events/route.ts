@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Event } from "@/models/events";
+import { Op } from "sequelize";
 
 export async function GET(
   request: NextRequest,
@@ -8,9 +9,14 @@ export async function GET(
   const { plantId: plantIdString } = await params;
   const plantId = parseInt(plantIdString, 10);
 
-  // Get latest 50 records in descending order, then reverse for chronological display
+  // Get events from last 24 hours in descending order, then reverse for chronological display
   const latestEvents = await Event.findAll({
-    where: { plantId },
+    where: {
+      plantId,
+      timestamp: {
+        [Op.gte]: new Date(Date.now() - 24 * 60 * 60 * 1000), // 24 hours ago
+      },
+    },
     attributes: ["id", "moisture", "timestamp", "plantId"],
     order: [["timestamp", "DESC"]],
     limit: 50,
