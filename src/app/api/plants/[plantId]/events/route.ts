@@ -27,6 +27,11 @@ export async function POST(
   { params }: { params: Promise<{ plantId: string }> }
 ) {
   try {
+    const authHeader = request.headers.get("Authorization");
+    if (authHeader !== `Bearer ${process.env.API_KEY}`) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { plantId: plantIdString } = await params;
     const plantId = parseInt(plantIdString, 10);
     const body = await request.json();
