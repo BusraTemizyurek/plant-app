@@ -14,7 +14,3 @@ export const sql = new Sequelize({
   },
   dialectModule: pg,
 });
-
-sql.sync({
-  alter: false,
-});
