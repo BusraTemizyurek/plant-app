@@ -5,7 +5,8 @@ import { verifyToken } from "@clerk/nextjs/server";
 export async function GET(
   req: NextRequest
 ): Promise<NextResponse<Plant[] | { error: string }>> {
-  const authHeader = req.headers.get("authorization");
+  const authHeader =
+    req.headers.get("authorization") || req.headers.get("Authorization");
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     // return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
