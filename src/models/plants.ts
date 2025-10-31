@@ -15,6 +15,7 @@ export class Plant extends Model<
   declare plantName: string;
   declare moisture: number;
   declare lastUpdated: Date;
+  declare userId: string;
 }
 
 Plant.init(
@@ -36,6 +37,10 @@ Plant.init(
     lastUpdated: {
       type: DataTypes.DATE,
       allowNull: true,
+    },
+    userId: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   { sequelize: sql, tableName: "plants", timestamps: false }
