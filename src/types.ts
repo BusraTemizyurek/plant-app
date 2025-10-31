@@ -13,6 +13,8 @@ export type Event = {
 export interface Plant {
   id: number;
   plantName: string;
+  moisture: number;
+  lastUpdated: Date;
 }
 
 export type PlantState = "dried" | "healthy" | "overwatered";
