@@ -15,6 +15,7 @@ export interface Plant {
   plantName: string;
   moisture: number;
   lastUpdated: Date;
+  userId: string;
 }
 
 export type PlantState = "dried" | "healthy" | "overwatered";
