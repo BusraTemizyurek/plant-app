@@ -13,6 +13,8 @@ export class Plant extends Model<
 > {
   declare id: CreationOptional<number>;
   declare plantName: string;
+  declare moisture: number;
+  declare lastUpdated: Date;
 }
 
 Plant.init(
@@ -25,6 +27,14 @@ Plant.init(
     },
     plantName: {
       type: DataTypes.STRING,
+      allowNull: true,
+    },
+    moisture: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    lastUpdated: {
+      type: DataTypes.DATE,
       allowNull: true,
     },
   },

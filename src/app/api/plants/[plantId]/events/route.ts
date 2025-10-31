@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Event } from "@/models/events";
 import { Op } from "sequelize";
+import { Plant } from "@/models/plants";
 
 export async function GET(
   request: NextRequest,
@@ -51,6 +52,14 @@ export async function POST(
     }
 
     await Event.create({ moisture, plantId });
+    await Plant.update(
+      { moisture, lastUpdated: new Date() },
+      {
+        where: {
+          id: plantId,
+        },
+      }
+    );
 
     return NextResponse.json({ status: 201 });
   } catch (error) {
